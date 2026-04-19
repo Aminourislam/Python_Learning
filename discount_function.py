@@ -12,11 +12,10 @@ def apply_discount(price, discount):
         returning = "The discount should be between 0 and 100"
         return returning
     final_price = price - (price * (discount / 100))
-    returning = f"Final price: {final_price}"
+    returning = final_price
     return returning
     
 print(apply_discount(100,20))
-print(apply_discount(200,50))
+print(apply_discount(74.5, 20.0))
 print(apply_discount(50,0))
 print(apply_discount(100,0))
-print(apply_discount(74.5,20.0))
