@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Basics Review – freeCodeCamp style</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0c10;
+      font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #f0f0f0;
+      padding: 2rem 1rem;
+    }
+
+    /* main container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #000000;
+      border-radius: 28px;
+      padding: 2rem 2rem 2rem 2rem;
+      box-shadow: 0 10px 30px rgba(0, 255, 0, 0.08);
+      border: 1px solid #2a3a2a;
+    }
+
+    /* headings */
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #b3ffcf, #2ecc71);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      border-left: 5px solid #2ecc71;
+      padding-left: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .subhead {
+      color: #a0b0c0;
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #2ecc7133;
+      padding-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 1.8rem 0 1rem 0;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #2ecc71;
+      color: #b3ffcf;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 1.2rem 0 0.6rem 0;
+      color: #8efc9e;
+    }
+
+    p, li {
+      color: #e6eef5;
+    }
+
+    ul, ol {
+      margin: 0.75rem 0 1rem 1.8rem;
+    }
+
+    li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* inline code */
+    code {
+      background: #1e2a2a;
+      color: #c9ffb6;
+      padding: 0.2rem 0.45rem;
+      border-radius: 8px;
+      font-family: 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.85rem;
+    }
+
+    /* code blocks (exactly as in lesson) */
+    .code-block {
+      background: #11161f;
+      border-left: 4px solid #2ecc71;
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+      font-family: 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.85rem;
+      color: #d0f0c0;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .code-block code {
+      background: none;
+      padding: 0;
+      color: inherit;
+      font-size: inherit;
+    }
+
+    /* special notes / warnings */
+    .note {
+      background: #1f2a1f;
+      border-left: 5px solid #f39c12;
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
+      margin: 1rem 0;
+    }
+
+    .red-warning {
+      background: #2c1a1a;
+      border-left: 5px solid #e74c3c;
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
+      margin: 1rem 0;
+      color: #ffbbbb;
+    }
+
+    hr {
+      margin: 2rem 0;
+      border: 0;
+      height: 1px;
+      background: linear-gradient(90deg, #2ecc71, #444, #2ecc71);
+    }
+
+    /* print button */
+    .print-footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #2ecc7140;
+    }
+
+    .print-btn {
+      background: #1e3a2a;
+      border: 1px solid #2ecc71;
+      color: #b0ffb0;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 0.7rem 2rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .print-btn:hover {
+      background: #2ecc71;
+      color: #000;
+      box-shadow: 0 0 12px #2ecc71;
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      .container {
+        background: white;
+        border: none;
+        box-shadow: none;
+        color: black;
+      }
+      h1 {
+        background: none;
+        color: #0a4b2a;
+      }
+      h2 {
+        color: #0f6b3a;
+        border-bottom-color: #aaa;
+      }
+      .code-block {
+        background: #f4f4f4;
+        color: #111;
+        border-left-color: #2c6b2c;
+      }
+      .print-btn {
+        display: none;
+      }
+      .red-warning {
+        background: #ffe0e0;
+        color: #b00020;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container" id="printableContent">
+  <h1>🐍 Python Basics Review</h1>
+  <div class="subhead">Based on freeCodeCamp — full lesson, student‑friendly</div>
+
+  <!-- ==================== EXACT CONTENT FROM USER ==================== -->
+
+  <h2>What is Python?</h2>
+  <p><strong>Introduction:</strong> Python is a general-purpose programming language known for its simplicity and ease of use. Python is used in many fields like data science and machine learning, web development, scripting and automation, embedded systems and IoT, and much more.</p>
+  <p><strong>Common Use Cases:</strong> Python is used in data science, machine learning, web development, cybersecurity, automation and microcomputers like the Raspberry Pi and MicroPython-compatible boards.</p>
+
+  <h2>Python in Your Local Environment</h2>
+  <p><strong>Installation:</strong> The best way to install Python on Windows, Mac, and Linux is to download the installer from the official Python website (<a href="https://www.python.org/" style="color:#8eff8e;">https://www.python.org/</a>).</p>
+
+  <h2>Variables</h2>
+  <p><strong>Declaring Variables:</strong> To declare a variable, you start with the variable name followed by the assignment operator (=) and then the value. This can be a number, string, boolean, etc. Here are some examples:</p>
+  <div class="code-block"><code>name = 'John Doe'<br>age = 25</code></div>
+  <p><strong>Naming Conventions for Variables:</strong><br>
+  - Variable names can only start with a letter or an underscore (_), not a number.<br>
+  - Variable names can only contain alphanumeric characters (a-z, A-Z, 0-9) and underscores (_).<br>
+  - Variable names are case-sensitive — age, Age, and AGE are all considered unique.<br>
+  - Variable names cannot be one of Python’s reserved keywords such as if, class, or def.<br>
+  - Variables names with multiple words are separated by underscores. Ex. snake_case.</p>
+
+  <h2>Comments</h2>
+  <p><strong>Single Line Comments:</strong> These types of comments should be used for short notes you wish to leave in your code.</p>
+  <div class="code-block"><code># This is a single line comment</code></div>
+  <p><strong>Multi-line Strings:</strong> These types of strings can be used to leave larger notes or to comment out sections of code.</p>
+  <div class="code-block"><code>"""<br>This is a multi-line string.<br>Here is some code commented out.<br><br>name = 'John Doe'<br>age = 25<br>"""</code></div>
+  <p><strong>print() Function:</strong> To print data to the console, you can use the print() function like this:</p>
+  <div class="code-block"><code>print('Hello world!') # Hello world!</code></div>
+
+  <h2>Common Data Types in Python</h2>
+  <p><strong>Introduction:</strong> Python is a dynamically-typed language like JavaScript, meaning you don't need to explicitly declare types for variables. The language knows what the type of a variable is based on what you assign to the variable.</p>
+  <p><strong>Integer:</strong> A whole number without decimals:</p>
+  <div class="code-block"><code>my_integer_var = 10<br>print('Integer:', my_integer_var) # Integer: 10</code></div>
+  <p><strong>Float:</strong> A number with decimals:</p>
+  <div class="code-block"><code>my_float_var = 4.50<br>print('Float:', my_float_var) # Float: 4.5</code></div>
+  <p><strong>String:</strong> A sequence of characters wrapped in quotes:</p>
+  <div class="code-block"><code>my_string_var = 'hello'<br>print('String:', my_string_var) # String: hello</code></div>
+  <p><strong>Boolean:</strong> A value representing either True or False:</p>
+  <div class="code-block"><code>my_boolean_var = True<br>print('Boolean:', my_boolean_var) # Boolean: True</code></div>
+  <p><strong>Set:</strong> An unordered collection of unique elements:</p>
+  <div class="code-block"><code>my_set_var = {7, 5, 8}<br>print('Set:', my_set_var) # Set: {7, 5, 8}</code></div>
+  <p><strong>Dictionary:</strong> A collection of key-value pairs, enclosed in curly braces:</p>
+  <div class="code-block"><code>my_dictionary_var = {"name": "Alice", "age": 25}<br>print('Dictionary:', my_dictionary_var) # Dictionary: {'name': 'Alice', 'age': 25}</code></div>
+  <p><strong>Tuple:</strong> An immutable ordered collection, enclosed in parentheses:</p>
+  <div class="code-block"><code>my_tuple_var = (7, 5, 8)<br>print('Tuple:', my_tuple_var) # Tuple: (7, 5, 8)</code></div>
+  <p><strong>Range:</strong> A sequence of numbers, often used in loops:</p>
+  <div class="code-block"><code>my_range_var = range(5)<br>print(my_range_var) # range(0, 5)</code></div>
+  <p><strong>List:</strong> An ordered collection of elements that supports different data types:</p>
+  <div class="code-block"><code>my_list = [22, 'Hello world', 3.14, True]<br>print(my_list) # [22, 'Hello world', 3.14, True]</code></div>
+  <p><strong>None:</strong> A special value that represents the absence of a value:</p>
+  <div class="code-block"><code>my_none_var = None<br>print('None:', my_none_var) # None: None</code></div>
+
+  <h2>Immutable and Mutable Types</h2>
+  <p><strong>Immutable Types:</strong> These types cannot change once declared, although you can point their variables at something new, which is called reassignment. They include integer, float, complex, boolean, string, tuple, range, and None.<br>
+  <strong>Mutable Types:</strong> These types can change once declared. You can add, remove, or update their items. They include collection types such as list, set, and dictionary.<br>
+  <strong>type() Function:</strong> To see the type for a variable, you can use the type() function like this:</p>
+  <div class="code-block"><code>greeting = 'Hello there!'<br>age = 21<br><br>print(type(greeting)) # &lt;class 'str'&gt;<br>print(type(age)) # &lt;class 'int'&gt;</code></div>
+  <p><strong>isinstance() Function:</strong> This is used to check if a variable matches a specific data type:</p>
+  <div class="code-block"><code>greeting = 'Hello world'<br>name = 'John Doe'<br><br>print(isinstance(greeting, str)) # True<br>print(isinstance(name, int)) # False</code></div>
+
+  <h2>Working with Strings</h2>
+  <p><strong>Definition:</strong> As you recall from JavaScript, strings are immutable which means you can not change them after they have been created. In Python, you can use either single or double quotes. It is recommended to choose a rule and stick with it:</p>
+  <div class="code-block"><code>developer = 'Jessica'<br>city = "Los Angeles"</code></div>
+  <p><strong>Accessing Characters from Strings:</strong> You can access characters from strings by using bracket notation like this:</p>
+  <div class="code-block"><code>my_str = 'Hello world'<br><br>print(my_str[0])  # H<br>print(my_str[6])  # w<br><br>print(my_str[-1])  # d<br>print(my_str[-2]) # l</code></div>
+  <p><strong>Escaping Strings:</strong> You can use a backslash (\) if your string contains quotes like this:</p>
+  <div class="code-block"><code>msg = 'It\'s a sunny day'<br>quote = "She said, \"Hello!\""</code></div>
+  <p><strong>String Concatenation:</strong> To concatenate strings, you can use the + operator like this:</p>
+  <div class="code-block"><code>developer = 'Jessica'<br>print('My name is ' + developer + '.') # My name is Jessica.</code></div>
+  <p>Another way to concatenate strings is by using the += operator. This is used to perform concatenation and assignment in the same step like this:</p>
+  <div class="code-block"><code>greeting = 'My name is '<br>developer = 'Jessica.'<br><br>greeting += developer<br>print(greeting) # My name is Jessica.</code></div>
+  <p><strong>f-strings:</strong> This is short for formatted string literals. It allows you to handle interpolation and also do some concatenation with a compact and readable syntax:</p>
+  <div class="code-block"><code>developer = 'Jessica'<br>greeting = f'My name is {developer}. '<br>print(greeting) # My name is Jessica.</code></div>
+  <p><strong>String Slicing:</strong> This is when you can extract portions of a string. Here is the basic syntax: <code>str[start:stop:step]</code><br>
+  The start position represents the index where the extraction should begin. The stop position is where the slice should end. This position is non inclusive. The step position represents the interval to increment for the slicing. Here are some examples:</p>
+  <div class="code-block"><code>message = 'Python is fun!'<br><br>print(message[0:6])  # Python<br>print(message[7:])  # is fun!<br>print(message[::2])  # Pto sfn</code></div>
+  <p><strong>Getting the Length of a String:</strong> The len() function is used to return the number of the characters in the string:</p>
+  <div class="code-block"><code>developer = 'Jessica'<br><br>print(len(developer)) # 7</code></div>
+
+  <h2>Working with the in operator</h2>
+  <p><strong>in Operator:</strong> This returns a boolean that specifies whether the character or characters exist in the string or not:</p>
+  <div class="code-block"><code>my_str = 'Hello world'<br><br>print('Hello' in my_str)  # True<br>print('hey' in my_str)    # False<br>print('hi' in my_str)    # False<br>print('e' in my_str)  # True<br>print('f' in my_str)  # False</code></div>
+
+  <h2>Common String Methods</h2>
+  <p><strong>str.upper():</strong> This returns a new string with all characters converted to uppercase:</p>
+  <div class="code-block"><code>developer = 'Jessica'<br>print(developer.upper()) # JESSICA</code></div>
+  <p><strong>str.lower():</strong> This returns a new string with all characters converted to lowercase:</p>
+  <div class="code-block"><code>developer = 'Jessica'<br>print(developer.lower()) # jessica</code></div>
+  <p><strong>str.strip():</strong> This returns a copy of the string with specified leading and trailing characters removed (if no argument is passed to the method, it removes leading and trailing whitespace).</p>
+  <div class="code-block"><code>greeting = '  hello world  '<br>trimmed_my_str = greeting.strip()<br>print(trimmed_my_str)  # 'hello world'</code></div>
+  <p><strong>replace():</strong> This returns a new string with all occurrences of the old string replaced by a new one.</p>
+  <div class="code-block"><code>greeting = 'hello world'<br>replaced_my_str = greeting.replace('hello', 'hi')<br>print(replaced_my_str)  # 'hi world'</code></div>
+  <p><strong>split():</strong> This is used to split a string into a list using a specified separator. A separator is a string specifying where the split should happen.</p>
+  <div class="code-block"><code>dashed_name = 'example-dashed-name'<br>split_words = dashed_name.split('-')<br>print(split_words)  # ['example', 'dashed', 'name']</code></div>
+  <p><strong>join():</strong> This is used to join elements of an iterable into a string with a separator. An iterable is a collection of elements that can be looped over like a list, string or a tuple.</p>
+  <div class="code-block"><code>example_list = ['example', 'dashed', 'name']<br>joined_str = ' '.join(example_list)<br>print(joined_str)  # example dashed name</code></div>
+  <p><strong>str.startswith(prefix):</strong> This returns a boolean indicating if a string starts with the specified prefix:</p>
+  <div class="code-block"><code>developer = 'Naomi'<br>result = developer.startswith('N')<br>print(result)  # True</code></div>
+  <p><strong>str.endswith(suffix):</strong> This returns a boolean indicating if a string ends with the specified suffix:</p>
+  <div class="code-block"><code>developer = 'Naomi'<br>result = developer.endswith('N')<br>print(result)  # False</code></div>
+  <p><strong>str.find():</strong> This returns the index for the first occurrence of a substring. If one is not found, then -1 is returned:</p>
+  <div class="code-block"><code>developer = 'Naomi'<br>result = developer.find('N')<br>print(result)  # 0<br><br>city = 'Los Angeles'<br>print(city.find('New')) # -1</code></div>
+  <p><strong>str.count(substring):</strong> This counts how many times a substring appears in a string:</p>
+  <div class="code-block"><code>city = 'Los Angeles'<br>print(city.count('e')) # 2</code></div>
+  <p><strong>str.capitalize():</strong> This returns a new string with the first character capitalized and the other characters lowercased:</p>
+  <div class="code-block"><code>dessert = 'chocolate cake'<br>print(dessert.capitalize()) # Chocolate cake</code></div>
+  <p><strong>str.isupper():</strong> This returns True if all letters in the string are uppercase and False if otherwise:</p>
+  <div class="code-block"><code>dessert = 'chocolate cake'<br>print(dessert.isupper()) # False</code></div>
+  <p><strong>str.islower():</strong> This returns True if all letters in the string are lowercase and False if otherwise:</p>
+  <div class="code-block"><code>dessert = 'chocolate cake'<br>print(dessert.islower()) # True</code></div>
+  <p><strong>str.title():</strong> This returns a new string with the first letter of each word capitalized:</p>
+  <div class="code-block"><code>city = 'los angeles'<br>print(city.title()) # Los Angeles</code></div>
+  <p><strong>str.maketrans():</strong> This method is used to create a table of 1 to 1 character mappings for translation. It is often used with the translate() method which applies that table to a string and return the translated result.</p>
+  <div class="code-block"><code>trans_table = str.maketrans('abc', '123')<br>print(trans_table) # {97: 49, 98: 50, 99: 51}<br><br>result = 'abcabc'.translate(trans_table)<br>print(result)  # 123123</code></div>
+
+  <h2>Common Operations used with Integers and Floats</h2>
+  <p><strong>Basic Math Operations:</strong> In Python, you can do basic math operations with integers and floats including addition, subtraction, multiplication and division:</p>
+  <div class="code-block"><code>int_1 = 56<br>int_2 = 12<br>float_1 = 5.4<br>float_2 = 12.0<br><br># Addition<br>print('Integer Addition:', int_1 + int_2) # Integer Addition: 68<br>print('Float Addition:', float_1 + float_2) # Float Addition: 17.4<br><br># Subtraction<br>print('Int Subtraction:', int_1 - int_2) # Int Subtraction: 44<br>print('Float Subtraction:',  float_2 - float_1) # Float Subtraction: 6.6<br><br># Multiplication<br>print('Int Multiplication:', int_1 * int_2) # Int Multiplication: 672<br>print('Float Multiplication:', float_2 * float_1) # Float Multiplication: 64.80000000000001<br><br># Division<br>print('Int Division:', int_1 / int_2) # Int Division: 4.666666666666667<br>print('Float Division:', float_2 / float_1) # Float Division: 2.222222222222222</code></div>
+  <p>When you add a float and an integer, the result will be converted to a float like this:</p>
+  <div class="code-block"><code>int_1 = 56<br>float_1 = 5.4<br>print(int_1 + float_1) # 61.4</code></div>
+  <p><strong>Modulo Operator (%):</strong> This returns the remainder when a number is divided by another number:</p>
+  <div class="code-block"><code>int_1 = 56<br>int_2 = 12<br>print(int_1 % int_2) # 8</code></div>
+  <p><strong>Floor Division (//):</strong> This operator is used to divide two numbers and round down the result to the nearest whole number:</p>
+  <div class="code-block"><code>int_1 = 56<br>int_2 = 12<br>print(int_1 // int_2) # 4</code></div>
+  <p><strong>Exponentiation Operator (**):</strong> This operator is used to raise a number to the power of another:</p>
+  <div class="code-block"><code>int_1 = 4<br>int_2 = 2<br>print(int_1 ** int_2) # 16</code></div>
+  <p><strong>float() Function:</strong> You can use this function to convert an integer to float.</p>
+  <div class="code-block"><code>num = 4<br>print(float(num)) # 4.0</code></div>
+  <p><strong>int() Function:</strong> You can use this function to convert a float to an integer.</p>
+  <div class="code-block"><code>num = 4.0<br>print(int(num)) # 4</code></div>
+  <p><strong>round() Function:</strong> This is used to round a number to the nearest whole integer:</p>
+  <div class="code-block"><code>num_1 = 3.4<br>num_2 = 7.7<br>print(round(num_1)) # 3<br>print(round(num_2)) # 8</code></div>
+  <p><strong>abs() Function:</strong> This is used to return the absolute value of a number:</p>
+  <div class="code-block"><code>num = -13<br>print(abs(num)) # 13</code></div>
+  <p><strong>bin() Function:</strong> This is used to convert an integer to its binary representation as a string:</p>
+  <div class="code-block"><code>num = 56<br>print(bin(num))  # 0b111000</code></div>
+  <p><strong>oct() Function:</strong> This is used to convert an integer to its octal representation as a string:</p>
+  <div class="code-block"><code>num = 56<br>print(oct(num))  # 0o70</code></div>
+  <p><strong>hex() Function:</strong> This is used to convert an integer to its hexadecimal representation as a string:</p>
+  <div class="code-block"><code>num = 56<br>print(hex(num))  # 0x38</code></div>
+  <p><strong>pow() Function:</strong> This is used to raise a number to the power of another:</p>
+  <div class="code-block"><code>result = pow(2, 3) <br>print(result)  # 8</code></div>
+
+  <h2>Augmented Assignments</h2>
+  <p><strong>Definition:</strong> Augmented assignment combines a binary operation with an assignment in one step. It takes a variable, applies an operation to it with another value, and stores the result back into the same variable.</p>
+  <div class="code-block"><code># Addition assignment <br>my_var = 10<br>my_var += 5<br>print(my_var) # 15<br><br># Subtraction assignment<br>count = 14<br>count -= 3<br>print(count) # 11<br><br># Multiplication assignment <br>product = 65<br>product *= 7<br>print(product) # 455<br><br># Division assignment <br>price = 100<br>price /= 4<br>print(price) # 25.0<br><br># Floor Division assignment <br>total_pages = 23<br>total_pages //= 5<br>print(total_pages) # 4<br><br># Modulo assignment <br>bits = 35<br>bits %= 2<br>print(bits) # 1<br><br># Exponentiation assignment <br>power = 2<br>power **= 3<br>print(power) # 8</code></div>
+  <p>There are other augmented assignment operators too, like those for bitwise operators. They include &=, ^=, >>=, and <<=.</p>
+
+  <h2>Working with Functions</h2>
+  <p><strong>Definition:</strong> Functions are reusable pieces of code that take inputs (arguments) and returns an output. To call a function, you need to reference the function name followed by a set of parenthesis:</p>
+  <div class="code-block"><code># Defining a function<br>def get_sum(num_1, num_2):<br>    return num_1 + num_2<br><br>result = get_sum(3, 4) # function call<br>print(result) # 7</code></div>
+  <p>If a function does not explicitly return a value, then the default return value is None:</p>
+  <div class="code-block"><code>def greet():<br>    print('hello') <br><br>result = greet() # hello<br>print(result) # None</code></div>
+  <p>You can also supply default values to parameters like this:</p>
+  <div class="code-block"><code>def get_sum(num_1, num_2=2):<br>    return num_1 + num_2<br><br>result = get_sum(3) <br>print(result) # 5</code></div>
+  <p>If you call the function without the correct number of arguments, you will get a TypeError:</p>
+  <div class="code-block"><code>def calculate_sum(a, b):<br>    print(a + b)<br><br>calculate_sum()<br># TypeError: calculate_sum() missing 2 required positional arguments: 'a' and 'b'</code></div>
+
+  <h2>Common Built-in Functions</h2>
+  <p><strong>input() Function:</strong> This is used to prompt the user for some input:</p>
+  <div class="code-block"><code>name = input('What is your name?') # User types 'Kolade' and presses Enter  <br>print('Hello', name) # Hello Kolade</code></div>
+  <p><strong>int() Function:</strong> This is used to convert a number, boolean, or a numeric string into an integer:</p>
+  <div class="code-block"><code>print(int(3.14)) # 3<br>print(int('42')) # 42<br>print(int(True)) # 1<br>print(int(False)) # 0 </code></div>
+
+  <h2>Scope in Python</h2>
+  <p><strong>Local Scope:</strong> This is when a variable declared inside a function or class can only be accessed within that function or class.</p>
+  <div class="code-block"><code>def my_func():<br>    num = 10<br>    print(num)</code></div>
+  <p><strong>Enclosing Scope:</strong> This is when a function that's nested inside another function can access the variables of the function it's nested within.</p>
+  <div class="code-block"><code>def outer_func():<br>    msg = 'Hello there!'<br>    <br>    def inner_func():<br>        print(msg)<br>    inner_func()<br><br>print(outer_func()) # Hello there!</code></div>
+  <p><strong>Global Scope:</strong> This refers to variables that are declared outside any functions or classes which can be accessed from anywhere in the program.</p>
+  <div class="code-block"><code>tax = 0.70 <br><br>def get_total(subtotal):<br>    total = subtotal + (subtotal * tax)<br>    return total<br><br>print(get_total(100))  # 170.0</code></div>
+  <p><strong>Built-in Scope:</strong> Reserved names in Python for predefined functions, modules, keywords, and objects.</p>
+  <div class="code-block"><code>print(str(45)) # '45'<br>print(type(3.14)) # &lt;class 'float'&gt;<br>print(isinstance(3, str)) # False</code></div>
+
+  <h2>Comparison Operators</h2>
+  <p><strong>Equal (==):</strong> Checks if two values are equal:</p>
+  <div class="code-block"><code>print(3 == 4) # False</code></div>
+  <p><strong>Not equal (!=):</strong> Checks if two values are not equal:</p>
+  <div class="code-block"><code>print(3 != 4) # True</code></div>
+  <p><strong>Strictly greater than (>):</strong> Checks if one value is greater than another:</p>
+  <div class="code-block"><code>print(3 > 4) # False</code></div>
+  <p><strong>Strictly less than (<):</strong> Checks if one value is less than another:</p>
+  <div class="code-block"><code>print(3 < 4) # True</code></div>
+  <p><strong>Greater than or equal(>=):</strong> Checks if one value is greater than or equal to another:</p>
+  <div class="code-block"><code>print(3 >= 4) # False</code></div>
+  <p><strong>Less than or equal(<=):</strong> Checks if one value is less than or equal to another:</p>
+  <div class="code-block"><code>print(3 <= 4) # True</code></div>
+
+  <h2>Working with if, elif and else Statements</h2>
+  <p><strong>if Statements:</strong> These are conditions used to determine if something is true or not. If the condition evaluates to True, then that block of code will run.</p>
+  <div class="code-block"><code>age = 18<br><br>if age >= 18:<br>    print('You are an adult') # You are an adult</code></div>
+  <p><strong>elif Clause:</strong> These are conditions that come after an if statement. An elif clause runs only if all previous conditions evaluate to False and its own condition evaluates to True.</p>
+  <div class="code-block"><code>age = 16<br><br>if age >= 18:<br>    print('You are an adult')<br>elif age >= 13:<br>    print('You are a teenager')  # You are a teenager</code></div>
+  <p><strong>else Clause:</strong> This will run if no other conditions evaluate to True.</p>
+  <div class="code-block"><code>age = 12<br><br>if age >= 18:<br>    print('You are an adult')<br>elif age >= 13:<br>    print('You are a teenager')<br>else:<br>    print('You are a child')  # You are a child</code></div>
+  <p>You can also use nested if statements like this:</p>
+  <div class="code-block"><code>is_citizen = True<br>age = 25<br><br>if is_citizen:<br>    if age >= 18:<br>        print('You are eligible to vote') # You are eligible to vote<br>else:<br>    print('You are not eligible to vote')</code></div>
+
+  <h2>Truthy and Falsy Values</h2>
+  <p><strong>Definition:</strong> In Python, every value has an inherent boolean value, or a built-in sense of whether it should be treated as True or False in a logical context. Many values are considered truthy, that is, they evaluate to True in a logical context. Others are falsy, meaning they evaluate to False. Here are some examples of falsy values:</p>
+  <div class="code-block"><code>None<br>False<br>Integer 0<br>Float 0.0<br>Empty strings ''</code></div>
+  <p>Other values like non-zero numbers, and non-empty strings are truthy.</p>
+
+  <h2>Working with the bool() Function</h2>
+  <p><strong>Definition:</strong> If you want to check whether a value is truthy or falsy, you can use the built-in bool() function. It explicitly converts a value to its boolean equivalent and returns True for truthy values and False for falsy values. Here are a few examples:</p>
+  <div class="code-block"><code>print(bool(False)) # False<br>print(bool(0))  # False<br>print(bool('')) # False<br><br>print(bool(True)) # True<br>print(bool(1)) # True<br>print(bool('Hello')) # True</code></div>
+
+  <h2>Boolean Operators and Short-circuiting</h2>
+  <p><strong>Definition:</strong> These are special operators that allow you to combine multiple expressions to create more complex decision-making logic in your code. There are three Boolean operators in Python: and, or, and not.<br>
+  <strong>and Operator:</strong> This operator takes two operands and returns the first operand if it is falsy, otherwise, it returns the second operand. Both operands must be truthy for an expression to result in a truthy value.</p>
+  <div class="code-block"><code>is_citizen = True<br>age = 25<br><br>print(is_citizen and age) # 25</code></div>
+  <p>You can also use the and operator in conditionals like this:</p>
+  <div class="code-block"><code>is_citizen = True<br>age = 25<br><br>if is_citizen and age >= 18:<br>    print('You are eligible to vote') # You are eligible to vote<br>else:<br>    print('You are not eligible to vote')</code></div>
+  <p><strong>or Operator:</strong> This operator returns the first operand if it is truthy, otherwise, it returns the second operand. An or expression results in a truthy value if at least one operand is truthy. Here is an example:</p>
+  <div class="code-block"><code>age = 19<br>is_employed = False<br><br>print(age or is_employed) # 19</code></div>
+  <p>Just like with the and operator, you can use the or operator in conditionals like this:</p>
+  <div class="code-block"><code>age = 19<br>is_student = True<br><br>if age < 18 or is_student:<br>    print('You are eligible for a student discount') # You are eligible for a student discount<br>else:<br>    print('You are not eligible for a student discount')</code></div>
+  <p><strong>Short-circuiting:</strong> The and and or operators are known as a short-circuit operators. Short-circuiting means Python checks values from left to right and stops as soon as it determines the final result.<br>
+  <strong>not Operator:</strong> This operator takes a single operand and inverts its boolean value. It converts truthy values to False and falsy values to True. Unlike the previous operators we looked at, not always returns True or False. Here are some examples:</p>
+  <div class="code-block"><code>print(not '') # True, because empty string is falsy<br>print(not 'Hello') # False, because non-empty string is truthy<br>print(not 0) # True, because 0 is falsy<br>print(not 1) # False, because 1 is truthy<br>print(not False) # True, because False is falsy<br>print(not True) # False, because True is truthy</code></div>
+  <p>Here is an example of the not operator in a conditional:</p>
+  <div class="code-block"><code>is_admin = False<br><br>if not is_admin:<br>    print('Access denied for non-administrators.') # Access denied for non-administrators.<br>else:<br>    print('Welcome, Administrator!')</code></div>
+
+  <h2>Assignment</h2>
+  <p>Review the Python Basics topics and concepts.<br>Please complete the assignment<br>Navigated to Python Basics Review</p>
+
+  <hr>
+  <p style="text-align:center; font-size:0.85rem;">🐍 freeCodeCamp style — Python Basics Review. Study & practice.</p>
+</div>
+
+<div class="print-footer">
+  <button class="print-btn" id="printPageBtn">🖨️ Print / Save as PDF</button>
+  <p style="margin-top: 8px; font-size: 0.75rem;">Click to print all content above — perfect for offline learning.</p>
+</div>
+
+<script>
+  document.getElementById('printPageBtn').addEventListener('click', () => {
+    window.print();
+  });
+</script>
+</body>
+</html>
