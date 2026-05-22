@@ -71,7 +71,9 @@ for key, values in Dictionary.items(): # for key-value both
 for index, key in  enumerate(Dictionary.keys(),1): # enumerate(argument, starting_index)
 	print(f"{index}. {key}")
 print('\n')
-for index, value in enumerate(Dictionary.values()):
+for index, value in enumerate(Dictionary.values(),1):
 	print(f"{index}. {value}")
-for index, key_value, in enumerate(Dictionary.items()):
-	print(f"{index}. {x for x in key_value}")
+print('\n')
+for index, key_value, in enumerate(Dictionary.items(),1):
+	# key_value is a tuple
+	print(f"{index}. {key_value[0]} : {key_value[1]}")
