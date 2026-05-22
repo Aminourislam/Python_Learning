@@ -91,7 +91,7 @@
   <div class="code-block"><code>my_none_var = None<br>print('None:', my_none_var) # None: None</code></div>
 
   <h2 id="immutable-and-mutable-types">6. Immutable and Mutable Types</h2>
-  <p><strong>Immutable Types:</strong> These types cannot change once declared, although you can point their variables at something new, which is called reassignment. They include integer, float, complex, boolean, string, tuple, range, and None.<br>
+  <p><strong>Immutable Types:</strong> These types cannot change once declared, although you can point their variables at something new, which is called reassignment. They include <strong>integer, float, complex, boolean, string, tuple, range, and None.</strong><br>
   <strong>Mutable Types:</strong> These types can change once declared. You can add, remove, or update their items. They include collection types such as list, set, and dictionary.<br>
   <strong>type() Function:</strong> To see the type for a variable, you can use the type() function like this:</p>
   <div class="code-block"><code>greeting = 'Hello there!'<br>age = 21<br><br>print(type(greeting)) # &lt;class 'str'&gt;<br>print(type(age)) # &lt;class 'int'&gt;</code></div>
@@ -104,21 +104,21 @@
   <p><strong>Accessing Characters from Strings:</strong> You can access characters from strings by using bracket notation like this:</p>
   <div class="code-block"><code>my_str = 'Hello world'<br><br>print(my_str[0])  # H<br>print(my_str[6])  # w<br><br>print(my_str[-1])  # d<br>print(my_str[-2]) # l</code></div>
   <p><strong>Escaping Strings:</strong> You can use a backslash (\) if your string contains quotes like this:</p>
-  <div class="code-block"><code>msg = 'It\'s a sunny day'<br>quote = "She said, \"Hello!\""</code></div>
+  <div class="code-block"><code>quote = "She said, \"Hello!\"" <br>print(quote) # She said, "Hello!" </code></div>
   <p><strong>String Concatenation:</strong> To concatenate strings, you can use the + operator like this:</p>
   <div class="code-block"><code>developer = 'Jessica'<br>print('My name is ' + developer + '.') # My name is Jessica.</code></div>
   <p>Another way to concatenate strings is by using the += operator. This is used to perform concatenation and assignment in the same step like this:</p>
   <div class="code-block"><code>greeting = 'My name is '<br>developer = 'Jessica.'<br><br>greeting += developer<br>print(greeting) # My name is Jessica.</code></div>
   <p><strong>f-strings:</strong> This is short for formatted string literals. It allows you to handle interpolation and also do some concatenation with a compact and readable syntax:</p>
-  <div class="code-block"><code>developer = 'Jessica'<br>greeting = f'My name is {developer}. '<br>print(greeting) # My name is Jessica.</code></div>
+  <div class="code-block"><code>developer = 'Jessica'<br>age = 29<br>greeting = f'My name is {developer} and i am {age} years old.'<br>print(greeting) # My name is Jessica and i am 29 years old.</code></div>
   <p><strong>String Slicing:</strong> This is when you can extract portions of a string. Here is the basic syntax: <code>str[start:stop:step]</code><br>
   The start position represents the index where the extraction should begin. The stop position is where the slice should end. This position is non inclusive. The step position represents the interval to increment for the slicing. Here are some examples:</p>
   <div class="code-block"><code>message = 'Python is fun!'<br><br>print(message[0:6])  # Python<br>print(message[7:])  # is fun!<br>print(message[::2])  # Pto sfn</code></div>
   <p><strong>Getting the Length of a String:</strong> The len() function is used to return the number of the characters in the string:</p>
   <div class="code-block"><code>developer = 'Jessica'<br><br>print(len(developer)) # 7</code></div>
 
-  <h2 id="working-with-the-in-operator">8. Working with the in operator</h2>
-  <p><strong>in Operator:</strong> This returns a boolean that specifies whether the character or characters exist in the string or not:</p>
+  <h2 id="working-with-the-in-operator">8. Working with the "in" operator</h2>
+  <p><strong>"in" Operator:</strong> This returns a boolean that specifies whether the character or characters exist in the string or not:</p>
   <div class="code-block"><code>my_str = 'Hello world'<br><br>print('Hello' in my_str)  # True<br>print('hey' in my_str)    # False<br>print('hi' in my_str)    # False<br>print('e' in my_str)  # True<br>print('f' in my_str)  # False</code></div>
 
   <h2 id="common-string-methods">9. Common String Methods</h2>
@@ -130,7 +130,7 @@
   <div class="code-block"><code>greeting = '  hello world  '<br>trimmed_my_str = greeting.strip()<br>print(trimmed_my_str)  # 'hello world'</code></div>
   <p><strong>replace():</strong> This returns a new string with all occurrences of the old string replaced by a new one.</p>
   <div class="code-block"><code>greeting = 'hello world'<br>replaced_my_str = greeting.replace('hello', 'hi')<br>print(replaced_my_str)  # 'hi world'</code></div>
-  <p><strong>split():</strong> This is used to split a string into a list using a specified separator. A separator is a string specifying where the split should happen.</p>
+  <p><strong>split(): {It make a list}</strong> This is used to split a string into a list using a specified separator. A separator is a string specifying where the split should happen.</p>
   <div class="code-block"><code>dashed_name = 'example-dashed-name'<br>split_words = dashed_name.split('-')<br>print(split_words)  # ['example', 'dashed', 'name']</code></div>
   <p><strong>join():</strong> This is used to join elements of an iterable into a string with a separator. An iterable is a collection of elements that can be looped over like a list, string or a tuple.</p>
   <div class="code-block"><code>example_list = ['example', 'dashed', 'name']<br>joined_str = ' '.join(example_list)<br>print(joined_str)  # example dashed name</code></div>
@@ -168,7 +168,7 @@
   <div class="code-block"><code>num = 4<br>print(float(num)) # 4.0</code></div>
   <p><strong>int() Function:</strong> You can use this function to convert a float to an integer.</p>
   <div class="code-block"><code>num = 4.0<br>print(int(num)) # 4</code></div>
-  <p><strong>round() Function:</strong> This is used to round a number to the nearest whole integer:</p>
+  <p><strong>round() Function:</strong> This is used to round a number to <strong>the nearest whole integer:</strong></p>
   <div class="code-block"><code>num_1 = 3.4<br>num_2 = 7.7<br>print(round(num_1)) # 3<br>print(round(num_2)) # 8</code></div>
   <p><strong>abs() Function:</strong> This is used to return the absolute value of a number:</p>
   <div class="code-block"><code>num = -13<br>print(abs(num)) # 13</code></div>
