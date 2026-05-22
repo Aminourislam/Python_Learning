@@ -40,7 +40,7 @@ def find_invalid_records(
 ):
     constraints = {
         'patient_id': isinstance(patient_id, str)
-        and re.fullmatch('p\d+', patient_id, re.IGNORECASE),
+        and re.fullmatch("p\d+", patient_id, re.IGNORECASE),
         'age': isinstance(age, int) and age >= 18,
         'gender': isinstance(gender, str) and gender.lower() in ('male', 'female'),
         'diagnosis': isinstance(diagnosis, str) or diagnosis is None,
@@ -77,25 +77,12 @@ def validate(data):
             continue
 
         invalid_records = find_invalid_records(**dictionary)
-        for 
-
+        for key in invalid_records:
+            print(f"Unexpected format '{key}: {dictionary[key]}' at position {index}.")
+            is_invalid = True
     if is_invalid:
         return False
     print('Valid format.')
     return True
 
 validate(medical_records)
-
-# Right after the invalid_records variable, create a for loop to iterate over it. For each invalid record, print Unexpected format '<key>: <val>' at position <index>.. Replace <key>, <val>, and <index> with the current key, value, and index.
-
-# Remember that invalid_records is a list of keys that refer to invalid records in the current dictionary. You will need to take the key from invalid_records and look up the value in dictionary.
-
-# Position or index refers to the current dictionary in medical_records, defined by the outer for loop in the function.
-
-# Review your code so far if you need to remind yourself of the loops and variables already created.
-
-# Then, set is_invalid to True.
-
-# Feel free to test the validate function with invalid data to see the validation messages.
-
-# With that, the medical validator workshop is complete.
