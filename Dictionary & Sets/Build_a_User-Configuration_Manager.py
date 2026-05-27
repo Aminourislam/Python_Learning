@@ -1,4 +1,8 @@
-test_settings = {}
+test_settings = {
+'theme': "",
+'language': '',
+'notifications': ""
+}
 key_value_tuple = ('x', 'y')
 def add_setting(test_settings,key_value_tuple):
 	dic_keys = []
@@ -34,25 +38,18 @@ def update_setting(test_settings,key_value_tuple):
 
 def delete_setting(test_settings, key):
 	key = str(key).lower()
-
-	dic_keys = []
-	for x in test_settings.keys():
-		dic_keys.append(x)
-
+	
 	if key in test_settings:
 		test_settings.pop(key)
 		return f"Setting '{key}' deleted successfully!"
 	else:
 		return f"Setting not found!"
 
-
 def view_settings(test_settings):
-	dic_keys = []
-	for x in test_settings.keys():
-		dic_keys.append(x)
-
-	if len(dic_keys) == 0:
-		return "No settings available."
-	else:
-		for key, value in test_settings.items():
-			return f"Current User Settings:\n {key.capitalize()}: {value}\n"
+    if not test_settings:  # simpler empty check
+        return "No settings available."
+    
+    result = "Current User Settings:\n"
+    for key, value in test_settings.items():
+        result += f"{key.capitalize()}: {value}\n"
+    return result
