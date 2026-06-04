@@ -28,7 +28,8 @@ def is_valid_schema(obj):
     
     if not isinstance(obj['username'], str):
         return False 
-    if not isinstance(obj['posts'], int):
+    # if not isinstance(obj['posts'], int):
+    if type(obj['posts']) is not int:
         return False
     if not isinstance(obj['verified'], bool):
         return False
