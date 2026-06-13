@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records Validator - Workflow Diagram (Fixed)</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.6/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef2f5;
+            font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0b3b5f, #1b4f72);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+
+        .header h1 {
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+
+        .header p {
+            margin-top: 0.4rem;
+            opacity: 0.85;
+        }
+
+        .diagram-container {
+            padding: 2rem;
+            background: #ffffff;
+            overflow-x: auto;
+        }
+
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            min-width: 800px;
+        }
+
+        .legend {
+            background: #f8f9fc;
+            padding: 1rem 2rem;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .note {
+            background: #eef2ff;
+            margin: 1rem 2rem 2rem 2rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            color: #1e3a8a;
+            border-left: 4px solid #3b82f6;
+        }
+
+        @media (max-width: 700px) {
+            body { padding: 1rem; }
+            .header h1 { font-size: 1.4rem; }
+            .diagram-container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📊 Medical Records Validator — Workflow Diagram</h1>
+        <p>Validation logic for patient records (freeCodeCamp workshop) — fixed Mermaid syntax</p>
+    </div>
+    <div class="diagram-container">
+        <pre class="mermaid">
+flowchart TD
+    Start(["Start: validate(medical_records)"]) --> CheckSeq{Is data a list or tuple?}
+    
+    CheckSeq -->|No| PrintSeqErr["Print error: expected list/tuple"]
+    PrintSeqErr --> ReturnFalse(["Return False"])
+    
+    CheckSeq -->|Yes| Init["Initialize: is_invalid = False, key_set = required keys"]
+    
+    Init --> ForEach["For each index, dictionary in enumerate(data)"]
+    
+    ForEach --> IsDict{Is it a dict?}
+    IsDict -->|No| PrintDictErr["Print: expected dict at position {index}"]
+    PrintDictErr --> SetInvalid1["is_invalid = True"]
+    SetInvalid1 --> ContinueLoop["Continue to next record"]
+    ContinueLoop --> ForEach
+    
+    IsDict -->|Yes| CheckKeys{Keys match key_set?}
+    CheckKeys -->|No| PrintKeyErr["Print: missing/invalid keys at {index}"]
+    PrintKeyErr --> SetInvalid2["is_invalid = True"]
+    SetInvalid2 --> ContinueLoop
+    
+    CheckKeys -->|Yes| CallFind["Call find_invalid_records(**dictionary)"]
+    
+    CallFind --> GetInvalid["invalid_records = list of invalid keys"]
+    GetInvalid --> ForEachKey["For each key in invalid_records"]
+    
+    ForEachKey --> PrintUnexpected["Print: Unexpected format 'key: value' at position {index}"]
+    PrintUnexpected --> SetInvalid3["is_invalid = True"]
+    SetInvalid3 --> NextKey["Next key"]
+    NextKey --> ForEachKey
+    
+    ForEachKey --> AfterLoop["After processing all keys"]
+    AfterLoop --> ContinueLoop
+    
+    ContinueLoop --> MoreRecords{More records?}
+    MoreRecords -->|Yes| ForEach
+    MoreRecords -->|No| CheckFinal{is_invalid == True?}
+    
+    CheckFinal -->|Yes| ReturnFalse2(["Return False"])
+    CheckFinal -->|No| PrintValid["Print: Valid format."]
+    PrintValid --> ReturnTrue(["Return True"])
+    
+    %% Styles
+    classDef process fill:#d9eff7,stroke:#2c6e9e,stroke-width:1.5px;
+    classDef decision fill:#fff4e0,stroke:#e67e22,stroke-width:1.5px;
+    classDef error fill:#ffe6e6,stroke:#c0392b,stroke-width:1.5px;
+    classDef terminal fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+    
+    class Start,ReturnFalse,ReturnTrue,ReturnFalse2 terminal;
+    class CheckSeq,IsDict,CheckKeys,MoreRecords,CheckFinal decision;
+    class PrintSeqErr,PrintDictErr,PrintKeyErr,PrintUnexpected,SetInvalid1,SetInvalid2,SetInvalid3 error;
+    class Init,ForEach,CallFind,GetInvalid,ForEachKey,AfterLoop,ContinueLoop,PrintValid process;
+        </pre>
+    </div>
+    <div class="legend">
+        <div class="legend-item"><div class="legend-color" style="background:#e8f5e9; border:1px solid #2e7d32;"></div> Start / End</div>
+        <div class="legend-item"><div class="legend-color" style="background:#fff4e0; border:1px solid #e67e22;"></div> Decision (branch)</div>
+        <div class="legend-item"><div class="legend-color" style="background:#d9eff7; border:1px solid #2c6e9e;"></div> Process / Action</div>
+        <div class="legend-item"><div class="legend-color" style="background:#ffe6e6; border:1px solid #c0392b;"></div> Error / Invalid branch</div>
+    </div>
+    <div class="note">
+        ⚙️ <strong>How the validator works:</strong> The diagram shows the complete flow — from checking input type, iterating records, validating keys, calling <code>find_invalid_records</code> (which checks patient_id format, age ≥18, gender, diagnosis, medications list, last_visit_id), printing specific error messages for each invalid field, and finally returning <code>False</code> if any record is invalid, otherwise <code>True</code>.
+    </div>
+</div>
+
+<script>
+    mermaid.initialize({ startOnLoad: true, theme: "base", themeVariables: { fontFamily: "Segoe UI, Inter, sans-serif", fontSize: "14px" } });
+</script>
+</body>
+</html>
