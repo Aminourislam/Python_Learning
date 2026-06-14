@@ -15,7 +15,6 @@ def calculate_check_digit_10(main_digits_list):
 
     return expected_check_digit
 
-
 def calculate_check_digit_13(main_digits_list):
     digits_sum = 0
 
