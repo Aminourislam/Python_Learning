@@ -27,42 +27,42 @@ UserProfile = {
     Extra keys are allowed
 '''
 
-
-def is_valid_schema(obj): # {users: UserProfileList} 
-    given_list = obj['users']
-    if not isinstance(given_list, list):
+def is_valid_schema(obj):
+    # Step 1: Check that 'users' exists and is a list
+    if not isinstance(obj.get('users'), list):
         return False
-    if len(given_list) == 0:
+    
+    users_list = obj['users']
+    
+    # Step 2: Empty list is always valid
+    if not users_list:
         return True
-    obj = given_list[0]
-
-    Roles = ["user", "creator", "moderator", "staff", "admin"]
-    required_keys = ['username', 'posts', 'verified', 'role', 'badges']
-    for key in required_keys:
-        if key not in obj:
-            return False
     
-    if not isinstance(obj['username'], str):
-        return False 
-    # if not isinstance(obj['posts'], int):
-    if type(obj['posts']) is not int:
-        return False
-    if not isinstance(obj['verified'], bool):
-        return False
-    if not isinstance(obj['role'], str) or obj['role'] not in Roles:
-        return False
-    if 'supporter' in obj:
-        if not isinstance(obj['supporter'], bool):
-            return False
-    if not isinstance(obj['badges'], list):
-        return False
-    if not all([isinstance(badge, str) for badge in obj['badges']]):
-        return False
+    Roles = {"user", "creator", "moderator", "staff", "admin"}
     
+    # Step 3: Validate each user in the list
+    for user in users_list:
+        # Required keys
+        if not all(key in user for key in ['username', 'posts', 'verified', 'role', 'badges']):
+            return False
+        
+        # Type checks
+        if not isinstance(user['username'], str):
+            return False
+        if not isinstance(user['posts'], int):
+            return False
+        if not isinstance(user['verified'], bool):
+            return False
+        if not isinstance(user['role'], str) or user['role'] not in Roles:
+            return False
+        if 'supporter' in user and not isinstance(user['supporter'], bool):
+            return False
+        if not isinstance(user['badges'], list):
+            return False
+        if not all(isinstance(badge, str) for badge in user['badges']):
+            return False
     
     return True
-
-
 
 
 '''
