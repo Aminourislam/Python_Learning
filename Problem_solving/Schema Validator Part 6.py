@@ -28,28 +28,23 @@ UserProfile = {
 '''
 
 def is_valid_schema(obj):
-    # Step 1: Check that 'users' exists and is a list
     if not isinstance(obj.get('users'), list):
         return False
     
     users_list = obj['users']
     
-    # Step 2: Empty list is always valid
     if not users_list:
         return True
     
     Roles = {"user", "creator", "moderator", "staff", "admin"}
     
-    # Step 3: Validate each user in the list
     for user in users_list:
-        # Required keys
         if not all(key in user for key in ['username', 'posts', 'verified', 'role', 'badges']):
             return False
         
-        # Type checks
         if not isinstance(user['username'], str):
             return False
-        if not isinstance(user['posts'], int):
+        if type(obj['posts']) is not int:
             return False
         if not isinstance(user['verified'], bool):
             return False
