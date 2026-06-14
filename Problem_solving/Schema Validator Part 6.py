@@ -44,7 +44,7 @@ def is_valid_schema(obj):
         
         if not isinstance(user['username'], str):
             return False
-        if type(obj['posts']) is not int:
+        if type(user['posts']) is not int:
             return False
         if not isinstance(user['verified'], bool):
             return False
