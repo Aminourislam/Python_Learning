@@ -23,33 +23,7 @@ You should create three instances of the Planet class named planet_1, planet_2, 
 You should print each planet object to see the __str__ method output.
 You should call the orbit method on each planet object and print the result.
 '''
-class Planet:
-    def __init__(self, name, planet_type, star):
-        self.name = name
-        self.planet_type = planet_type
-        self.star = star
-        data_list = [self.name, self.planet_type, self.star]
-        if not all(isinstance(datatype, str) for datatype in data_list):
-            raise TypeError("name, planet type, and star must be strings")
-        if not all(("" == data) for data in data_list):
-            raise ValueError("name, planet_type, and star must be non-empty strings")
-    
-    def orbit(self):
-        return f"{self.name} is orbiting around {self.star}..."
-    def __str__(self):
-        return f"Planet: {self.name} | Type: {self.planet_type} | Star: {self.star}"
-
-planet_1 = Planet()
-print(planet_1.orbit())
-print(planet_1.__str__())
-
-planet_2 = Planet()
-print(planet_2.orbit())
-print(planet_2.__str__())
-
-planet_3 = Planet()
-print(planet_3.orbit())
-print(planet_3.__str__())
+Planet: {name} | Type: {planet_type} | Star: {star}
 
 '''
 Tests:
