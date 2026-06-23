@@ -31,7 +31,8 @@ class Planet:
         data_list = [self.name, self.planet_type, self.star]
         if not all(isinstance(datatype, str) for datatype in data_list):
             raise TypeError("name, planet type, and star must be strings")
-        if not all(("" == data) for data in data_list):
+        if all(data == "" for data in data_list):
+            # any(data == "" for data in data_list)
             raise ValueError("name, planet_type, and star must be non-empty strings")
     
     def orbit(self):
@@ -39,17 +40,17 @@ class Planet:
     def __str__(self):
         return f"Planet: {self.name} | Type: {self.planet_type} | Star: {self.star}"
 
-planet_1 = Planet()
+planet_1 = Planet("Earth", "Terrestrial", "Sun")
 print(planet_1.orbit())
-print(planet_1.__str__())
+print(planet_1)
 
-planet_2 = Planet()
+planet_2 = Planet("Mongol", "nai", "Buth")
 print(planet_2.orbit())
-print(planet_2.__str__())
+print(planet_2)
 
-planet_3 = Planet()
+planet_3 = Planet("Neptuen", "tras", "moon")
 print(planet_3.orbit())
-print(planet_3.__str__())
+print(planet_3)
 
 '''
 Tests:
