@@ -25,9 +25,16 @@ You should call the orbit method on each planet object and print the result.
 '''
 class Planet:
     def __init__(self, name, planet_type, star):
+        if not all(isinstance(item, str) for item in [name, planet_type, star]):
+            raise TypeError("name, planet type, and star must be strings")
+
+        if any(item == "" for item in [name, planet_type, star]):
+            raise ValueError("name, planet_type, and star must be non-empty strings")
+
         self.name = name
         self.planet_type = planet_type
         self.star = star
+<<<<<<< HEAD
         data_list = [self.name, self.planet_type, self.star]
         if not all(isinstance(datatype, str) for datatype in data_list):
             raise TypeError("name, planet type, and star must be strings")
@@ -35,11 +42,25 @@ class Planet:
             # any(data == "" for data in data_list)
             raise ValueError("name, planet_type, and star must be non-empty strings")
     
+=======
+
+>>>>>>> 0f3b9f7dcd3d516d3c526f87ed5fa28402cea326
     def orbit(self):
         return f"{self.name} is orbiting around {self.star}..."
-    def __str__(self):
-        return f"Planet: {self.name} | Type: {self.planet_type} | Star: {self.star}"
 
+    def __str__(self):
+        return f"Planet: {self.name} | Type: {self.planet_type} | Star: {self.star}."
+
+
+planet_1 = Planet("Earth", "Terrestrial", "Sun")
+planet_2 = Planet("Jupiter", "Gas Giant", "Sun")
+planet_3 = Planet("Mars", "Terrestrial", "Sun")
+
+print(planet_1)
+print(planet_2)
+print(planet_3)
+
+<<<<<<< HEAD
 planet_1 = Planet("Earth", "Terrestrial", "Sun")
 print(planet_1.orbit())
 print(planet_1)
@@ -51,6 +72,11 @@ print(planet_2)
 planet_3 = Planet("Neptuen", "tras", "moon")
 print(planet_3.orbit())
 print(planet_3)
+=======
+print(planet_1.orbit())
+print(planet_2.orbit())
+print(planet_3.orbit())
+>>>>>>> 0f3b9f7dcd3d516d3c526f87ed5fa28402cea326
 
 '''
 Tests:
