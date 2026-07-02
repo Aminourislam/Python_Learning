@@ -125,7 +125,6 @@ def create_spend_chart(categories):
 
     total_spent = sum(spent)
     percentages = [int((s / total_spent) * 10) * 10 if total_spent else 0 for s in spent]
-
     chart = "Percentage spent by category\n"
 
     for i in range(100, -1, -10):
@@ -135,9 +134,8 @@ def create_spend_chart(categories):
                 chart += " o "
             else:
                 chart += "   "
-        chart += " \n"  # trailing space before newline (matches example)
+        chart += " \n"  
 
-    # Horizontal line: 4 spaces, then dashes for each category (3 dashes per category + 1 extra)
     chart += "    " + "-" * (len(categories) * 3 + 1) + "\n"
 
     # Vertical category names
@@ -152,4 +150,40 @@ def create_spend_chart(categories):
                 chart += "   "           # 3 spaces when no letter
         chart += "\n"
 
-    return chart.rstrip("\n")  # remove trailing newline if any
+    return chart.rstrip("\n")  # removing trailing newline if any
+
+
+# --- Additional test data ---
+food = Category('Food')
+food.deposit(1000, 'initial deposit')
+food.withdraw(200, 'groceries')
+food.withdraw(150, 'restaurant')
+food.withdraw(50, 'snacks')
+
+clothing = Category('Clothing')
+clothing.deposit(500, 'initial deposit')
+clothing.withdraw(300, 'new jackets')
+clothing.withdraw(80, 'shoes')
+
+entertainment = Category('Entertainment')
+entertainment.deposit(300, 'initial deposit')
+entertainment.withdraw(120, 'movie tickets')
+entertainment.withdraw(60, 'concert')
+
+transport = Category('Transport')
+transport.deposit(200, 'initial deposit')
+transport.withdraw(40, 'bus fare')
+transport.withdraw(30, 'gas')
+
+# Print each category's ledger (for reference)
+print(food)
+print('\n' + '-'*40)
+print(clothing)
+print('\n' + '-'*40)
+print(entertainment)
+print('\n' + '-'*40)
+print(transport)
+print('\n' + '='*40)
+
+# Generate and print the spend chart
+print(create_spend_chart([food, clothing, entertainment, transport]))
